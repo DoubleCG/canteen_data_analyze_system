@@ -6,16 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class HomeModel {
 
-	// 最受欢迎单品？
 	public static function singlePopular($timeStart, $timeEnd, $num) {
-
-		// $result = OrderModel::join('demoorderitem', 'demoorder.ID', '=', 'demoorderitem.OrderID')
-		//  ->join('demodishname', 'demoorderitem.PicName', '=', 'demodishname.PicName')
-		//  ->select(DB::raw('
-		//             COUNT(1) count,
-		//             demodishname.dishname dish,
-		//             demoorderitem.Name money
-		//             '));
 
 		$result = DB::table('demoorder')
 			->whereBetween('Date_time', [$timeStart, $timeEnd])
@@ -24,6 +15,13 @@ class HomeModel {
 			->get();
 		return $result;
 
+		// $result = OrderModel::join('demoorderitem', 'demoorder.ID', '=', 'demoorderitem.OrderID')
+		//  ->join('demodishname', 'demoorderitem.PicName', '=', 'demodishname.PicName')
+		//  ->select(DB::raw('
+		//             COUNT(1) count,
+		//             demodishname.dishname dish,
+		//             demoorderitem.Name money
+		//             '));
 		// ->groupBy('demodishname.PicName')
 		// ->orderBy('count', 'desc')
 		// ->offset(1)

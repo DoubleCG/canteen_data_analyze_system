@@ -7,23 +7,29 @@ use App\DataModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Redis;
 
 class DataController extends Controller {
 
 	public function news() {
-		function utf8ize($d) {
-			if (is_array($d)) {
-				foreach ($d as $k => $v) {
-					$d[$k] = utf8ize($v);
-				}
-			} else if (is_string($d)) {
-				return utf8_encode($d);
-			}
-			return $d;
-		}
-		$result = Redis::set('a', utf8ize('123'));
-		return $result;
+
+		// function array_utf8_encode($dat) {
+		// 	if (is_string($dat)) {
+		// 		return utf8_encode($dat);
+		// 	}
+
+		// 	if (!is_array($dat)) {
+		// 		return $dat;
+		// 	}
+
+		// 	$ret = array();
+		// 	foreach ($dat as $i => $d) {
+		// 		$ret[$i] = array_utf8_encode($d);
+		// 	}
+
+		// 	return $ret;
+		// }
+		// $result = Redis::set('a', array_utf8_encode('123'));
+		return DataModel::news();
 	}
 
 	//

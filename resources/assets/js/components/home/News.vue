@@ -20,12 +20,29 @@
 <script>
     export default {
         mounted(){
-            this.checkNews();
-
+            setInterval(this.checkNews,5000);
         },
         data(){
             return{
                 newslist:[{
+                    phone:'123456***456',
+                    paytype:'支付宝',
+                    money:100,
+                    paytime:"12:06:12",
+                    foods:[{
+                        name:'锦鲤抄',
+                        number:2,
+                        price:21
+                    },{
+                        name:'炒饭',
+                        number:3,
+                        price:14
+                    },{
+                        name:'果冻',
+                        number:48,
+                        price:34
+                    }]
+                },{
                     phone:'123456***456',
                     paytype:'支付宝',
                     money:100,
@@ -48,12 +65,36 @@
         },
         methods:{
             checkNews(){
+                // this.newslist.unshift({
+                //     phone:'123456***456',
+                //     paytype:'支付宝',
+                //     money:100,
+                //     paytime:"12:06:12",
+                //     foods:[{
+                //         name:'锦鲤抄',
+                //         number:2,
+                //         price:21
+                //     },{
+                //         name:'炒饭',
+                //         number:3,
+                //         price:14
+                //     },{
+                //         name:'果冻',
+                //         number:48,
+                //         price:34
+                //     }]
+                // });
+                let vm = this;
                 axios.get('/api/news')
                 .then(response=>{
-                    console.log(response)
+                    let data  = response.data;
+                    while(data.length){
+                        let content = data.shift().content.replace('\\','');
+                        vm.newslist.unshift(JSON.parse(content));
+                    }
                 })
                 .catch(error=>{
-                    console.log(error)
+                    console.log(error);
                 })
             }
         }
