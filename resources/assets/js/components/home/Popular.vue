@@ -42,7 +42,7 @@
 
     export default {
         mounted() {
-            let isTest = true;
+            let isTest = false;
             if(isTest){
                 axios.get('/api/test')
                 .then(response=>{
@@ -54,12 +54,12 @@
             }else{
                 axios.get('/api/home/singlePopular')
                 .then(response => {
-                    console.log(response);
+                    console.log(response.data);
                     for (let i = 0; i < _.size(response.data); i++) {
                         response.data[i].money = '￥' + response.data[i].money;
                         response.data[i].count = response.data[i].count + '份';
                     }
-                    this.singleData = response.data;
+                    // this.singleData = response.data;
                 })
                 .catch(function (error) {
                     console.log('axios.get(/api/home/singlePopular)');
@@ -75,17 +75,19 @@
                     this.singleData = singleData;
                 });
 
-            // axios.get('/api/home/multiplePopular')
-            //     .then(response => {
-            //         for (let i = 0; i < _.size(response.data); i++) {
-            //             response.data[i].money = '￥' + response.data[i].money;
-            //             response.data[i].count = response.data[i].count + '份';
-            //         }
-            //         this.multipleData = response.data;
-            //     })
-            //     .catch(error=>{
-            //         console.log(error);
-            //     });
+            axios.get('/api/home/multiplePopular')
+                .then(response => {
+                    console.log(response);
+                    return;
+                    for (let i = 0; i < _.size(response.data); i++) {
+                        response.data[i].money = '￥' + response.data[i].money;
+                        response.data[i].count = response.data[i].count + '份';
+                    }
+                    this.multipleData = response.data;
+                })
+                .catch(error=>{
+                    console.log(error);
+                });
             }
 
 
@@ -93,6 +95,7 @@
         },
         data() {
             return {
+                // singleData: [],
                 singleData: [],
                 multipleData: [],
             };

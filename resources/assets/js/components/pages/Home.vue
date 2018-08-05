@@ -1,18 +1,20 @@
 <template>
     <div>
+<!--     <button @click='testClick'>testClick</button>
+    <router-view></router-view> -->
         <div>
             <div class="news">
                 <news></news>
             </div>
             <div class="popular">
-                <popular></popular>
+                <!-- <popular></popular> -->
             </div>
         </div>
         <div class="dataShow">
-            <!-- <data-show></data-show> -->
+            <data-show></data-show>
         </div>
         <div v-show="false" @click="gotop" class="page-component-up">
-            <i @click="gotop" class="icono-mail"></i>
+            <i @click="gotop" class="icono-caretUp"></i>
         </div>
 
     </div>
@@ -22,8 +24,8 @@
 
     import News from '../home/News';
     import Popular from '../home/Popular';
-    // import DataShow from '../home/DataShow';
-
+    import DataShow from '../home/DataShow';
+    import {mapState} from 'vuex'
 
     export default {
         mounted() {
@@ -32,6 +34,9 @@
             })
         },
         methods: {
+            testClick(){
+                this.$router.push('/client')
+            },
             gotop() {
                 $('body,html').animate({scrollTop: 0}, 800)
             }
@@ -39,7 +44,7 @@
         components: {
             News,
             Popular,
-            // DataShow
+            DataShow
         }
     }
 
@@ -75,7 +80,11 @@
         transition: .3s;
         box-shadow: 0 0 6px rgba(0, 0, 0, .12);
     }
-
+    .page-component-up i{
+        position: relative;
+        left:3px;
+        top:3px;
+    }
     .el-icon-caret-top {
         color: #409eff;
         display: block;
