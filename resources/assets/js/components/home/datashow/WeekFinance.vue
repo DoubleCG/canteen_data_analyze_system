@@ -35,128 +35,67 @@
 <script>
     export default {
         mounted() {
-            this.newChart();
-
+            let vm = this;
             axios.get('/api/home/weekFinance')
                 .then(response => {
-
-
-                    if(true){
-                        return;
+                    console.log(response.data);
+                    let data = response.data;
+                    let data_order_number = [];
+                    let data_money = [];
+                    for(let i=0;i<7;i++){
+                        data_order_number[i] = 0;
+                        data_money[i] = 0;
                     }
-                    for (let i = _.size(response.data) - 1; i >= 0; i--) {
-                        this.date.push(response.data[i].date);
-                        this.moneyData.push(response.data[i].money)
+
+                    for(let i=0,l=data.length;i<l;i++){
+                        let day_in_week = new Date(parseInt(data[i].paytime+'000')).getDay();
+                        data_order_number[day_in_week] ++;
+                        let foods = JSON.parse(data[i].foods.replace('\\',''));
+                        for(let food of foods){
+                            data_money[day_in_week] += food.price * food.number;
+                        }
                     }
 
-                    var colors = ['#5793f3', '#d14a61', '#675bba'];
-
-                    this.chartData = {
-                        color: colors,
-                        toolbox: {
-                            right: '10%',
-                            feature: {
-                                saveAsImage: {}
-                            }
-                        },
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'cross'
-                            }
-                        },
-
-                        xAxis: [
-                            {
-                                type: 'category',
-                                axisTick: {
-                                    alignWithLabel: true
-                                },
-                                axisLine: {
-                                    onZero: false,
-                                },
-                                data: this.date,
-                            },
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '营业额',
-                                position: 'left',
-                                axisLine: {
-                                    lineStyle: {
-                                        color: colors[0]
-                                    }
-                                },
-                                axisLabel: {
-                                    formatter: '{value} 元',
-                                }
-                            },
-                        ],
-                        series: [
-
-                            {
-                                name: '营业额',
-                                type: 'line',
-                                smooth: true,
-                                data: this.moneyData,
-                                markPoint: {
-                                    data: [
-                                        {
-                                            coord: [6, this.moneyData[6]], name: '今日',
-                                            label: {
-                                                normal: {
-                                                    formatter: '{b}'
-
-                                                }
-                                            }
-                                        }
-                                    ]
-                                },
-                            }
-                        ]
-                    }
+                    vm.data_order_number = data_order_number;
+                    vm.data_money = data_money;
+                    vm.newChart();
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
+
         },
         data() {
             return {
-                chartData: null,
-                date: [],
-                moneyData: [],
+                date_order_number: [],
+                data_money: []
             };
         },
         methods:{
             newChart(){
 
-               let ctx = document.getElementById('canvas-WeekFinance').getContext('2d');
+                let ctx = document.getElementById('canvas-WeekFinance').getContext('2d');
                 let vm = this;
                 new Chart(ctx, {
-                    // The type of chart we want to create
                     type: 'bar',
-
-                    // The data for our dataset
                     data: {
                         labels: ['周一','周二','周三','周四','周五','周六','周日'],
                         datasets: [{
                             label: "订单数",
                             backgroundColor: "#036497",
-                            data: [1,2,3,4,5,7,8],
+                            data: vm.data_order_number,
                         },{
                             label: "营业额",
                             backgroundColor: "#974512",
-                            data: [1,2,3,4,5,7,8],
+                            data: vm.data_money,
                         }]
                     },
-
-                    // Configuration options go here
                     options: {}
                 });
+
+
+                setTimeout(vm.newChart,60000);
             }
         }
-
-
     }
 </script>

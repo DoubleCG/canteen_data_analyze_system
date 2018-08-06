@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\HomeModel;
-
-// use Carbon\Carbon;
+use Carbon\Carbon;
 
 class HomeController extends Controller {
 	/**
@@ -52,18 +51,17 @@ class HomeController extends Controller {
 	}
 
 	public function moneyOverView() {
-//        $timeTodayStart = Carbon::parse(Carbon::now()->toDateString())->toDateTimeString();
+		//        $timeTodayStart = Carbon::parse(Carbon::now()->toDateString())->toDateTimeString();
 		//        $timeTodayEnd = Carbon::parse((Carbon::now()->toDateString()) . ' 23:59:59')->toDateTimeString();
 		//        $timeLastWeekStart = Carbon::parse(Carbon::now()->subWeek()->toDateString())->toDateTimeString();
 		//        $timeLastWeekEnd = Carbon::parse((Carbon::now()->subWeek()->toDateString()) . ' 23:59:59')->toDateTimeString();
 
-		// 默认只查看一周
-		$timeTodayStart = '2017-06-16 12:45:33';
-		$timeTodayEnd = '2017-06-16 17:08:19';
+		$now = Carbon::now()->getTimestamp();
+		$today0Clock = Carbon::today()->getTimestamp();
 
 		$num = '';
 
-		$Data = HomeModel::moneyOverView($timeTodayStart, $timeTodayEnd, $num);
+		$Data = HomeModel::moneyOverView($today0Clock, $now, $num);
 		// $LastWeekData = HomeModel::moneyOverView($timeLastWeekStart, $timeLastWeekEnd, $num);
 		// return compact('TodayData', 'LastWeekData');
 		return $Data;
@@ -86,12 +84,12 @@ class HomeController extends Controller {
 //        $timeTodayEnd = Carbon::parse((Carbon::now()->toDateString()) . ' 23:59:59')->toDateTimeString();
 		//        $timeLastWeekStart = Carbon::parse(Carbon::now()->subDays(6)->toDateString())->toDateTimeString();
 
-		$timeLastWeekStart = '2017-08-11 00:00:00';
-		$timeTodayEnd = '2017-08-17 23:59:59';
-
 		$num = '';
 
-		$TodayData = HomeModel::WeekFinance($timeLastWeekStart, $timeTodayEnd, $num);
+		$now = Carbon::now()->getTimestamp();
+		$startOfWeek = Carbon::create()->startOfWeek()->getTimestamp();
+
+		$TodayData = HomeModel::WeekFinance($startOfWeek, $now, $num);
 		return $TodayData;
 	}
 

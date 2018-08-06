@@ -3,14 +3,14 @@
         <div :span="12" class="moneyOverView">
             <money-over-view></money-over-view>
         </div>
-<!--         <div :span="12" class="payType">
+<!--         <div :span="12" class="todayClient">
                 <today-client></today-client>
             </div> -->
         <div :span="12" class="weekFinance">
             <week-finance></week-finance>
         </div>
-        <div :span="12" class="todayClient">
-            <pay-type></pay-type>
+        <div :span="12" class="payType">
+            <!-- <pay-type></pay-type> -->
         </div>
     </div>
 

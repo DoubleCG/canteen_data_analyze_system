@@ -66,34 +66,16 @@ class HomeModel {
 
 	public static function moneyOverView($timeStart, $timeEnd, $num) {
 
-		$result = 'moneyOverView';
-
 		if (empty($timeStart) || empty($timeEnd) || ($timeEnd < $timeStart)) {
 			return [
 				'error' => 'wrong time',
 			];
+		} else {
+			return DB::table('orders')
+				->whereBetween('paytime', [$timeStart, $timeEnd])
+				->get();
 		}
 
-		// $result = DB::table('demoorder')
-		// 	->whereBetween('');
-
-		// $result = DB::table('demoorder')->select(DB::raw('
-		//                   DATE_FORMAT(Date_time,\'%Y-%m-%d\') date,
-		//                   COUNT(1) count,
-		//                   SUM(Total_money) money'));
-
-		// if (empty($num)) {
-		// 	$result = $result->where('ClientID', 'like', '30001%');
-		// } else {
-		// 	$result = $result->where('ClientID', 'like', $num . '%');
-		// }
-
-		// $result = $result->whereBetween('Date_time', [$timeStart, $timeEnd]);
-
-		// $result = $result
-		// 	->get();
-
-		return $result;
 	}
 
 	public static function payType($timeStart, $timeEnd, $num) {
@@ -129,31 +111,17 @@ class HomeModel {
 	}
 
 	public static function WeekFinance($timeStart, $timeEnd, $num) {
-		$result = 'WeekFinance';
-		// if (empty($timeStart) || empty($timeEnd) || ($timeEnd < $timeStart)) {
-		// 	return [
-		// 		'error' => 'wrong time',
-		// 	];
-		// }
+		if (empty($timeStart) || empty($timeEnd) || ($timeEnd < $timeStart)) {
+			return [
+				'error' => 'wrong time',
+			];
+		} else {
+			$result = DB::table('orders')
+				->whereBetween('paytime', [$timeStart, $timeEnd])
+				->get();
 
-		// $result = DB::table('demoorder')->select(DB::raw('
-		//                   DATE_FORMAT(Date_time,\'%m-%d\') date,
-		//                   SUM(Total_money) money'));
-
-		// if (empty($num)) {
-		// 	$result = $result->where('ClientID', 'like', '30001%');
-		// } else {
-		// 	$result = $result->where('ClientID', 'like', $num . '%');
-		// }
-
-		// $result = $result->whereBetween('Date_time', [$timeStart, $timeEnd]);
-
-		// $result = $result
-		// 	->orderBy('date', 'desc')
-		// 	->groupBy('date')
-		// 	->get();
-
-		return $result;
+			return $result;
+		}
 	}
 
 	public static function TodayClient($timeStart, $timeEnd, $num) {

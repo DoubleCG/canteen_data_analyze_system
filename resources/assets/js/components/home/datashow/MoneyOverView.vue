@@ -8,6 +8,12 @@
                 <div class="orderNumberRow">
                     <div class="numTitle">
                         订单数:{{ OrderNumber }} / 营业额:{{ TotalMoney }}
+                        <i
+                            title='导出Excel'
+                            style='float:right;margin-right:10px;'
+                            class='icono-caretDownSquare'
+                            @click='downloadExcel'
+                        ></i>
                     </div>
 <!--                     <div>
                         总量 <span class="OrderNumber">  </span> 件
@@ -93,18 +99,42 @@
         components:{
         },
         mounted() {
-
-            this.newChart();
-
+            let vm = this;
             axios.get('/api/home/moneyOverView')
                 .then(response => {
+                    console.log('/api/home/moneyOverView');
+                    console.log(response);
+                    let data = response.data;
+                    let record_data_orderNumber = [];
+                    let record_data_totalMoney = [];
+                    for(let i=0;i<24;i++){
+                        record_data_orderNumber.push(0);
+                        record_data_totalMoney.push(0);
+                    }
+                    for(let i=0,l=data.length;i<l;i++){
+                        let h = new Date(parseInt(data[i].paytime+'000')).getHours();
+                        record_data_orderNumber[h] ++;
+                        let foods = JSON.parse(data[i].foods.replace('\\',''));
+                        for(let food of foods){
+                            record_data_totalMoney[h] += food.price * food.number;
+                        }
+                    }
 
+                    console.log(record_data_orderNumber);
+                    console.log(record_data_totalMoney);
+                    vm.data_orderNumber = record_data_orderNumber;
+                    vm.data_totalMoney = record_data_totalMoney;
+                    vm.newChart();
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         },
         methods :{
+            downloadExcel(){
+                console.log('downloadExcel');
+                axios.get('/')
+            },
             go(){
                 this.$router.push('/finance');
             },
@@ -116,10 +146,8 @@
                 new Chart(canvas, {
                     // The type of chart we want to create
                     type: 'line',
-
                     // The data for our dataset
                     data: {
-                        // labels: vm.labels_orderNumber,
                         labels: vm.labels,
                         datasets: [{
                             label: "订单数",
@@ -132,43 +160,19 @@
                             backgroundColor: 'transparent',
                             borderColor: '#635148',
                             data: vm.data_totalMoney,
-                        }
-                        ]
+                        }]
                     },
-
                     // Configuration options go here
                     options: {}
                 });
-
-                // let canvas_TotalMoney = document.getElementById('canvas-MoneyOverView-TotalMoney').getContext('2d');
-                // new Chart(canvas_TotalMoney, {
-                //     // The type of chart we want to create
-                //     type: 'line',
-
-                //     // The data for our dataset
-                //     data: {
-                //         labels: vm.labels_totalMoney,
-                //         datasets: [{
-                //             label: "Money",
-                //             backgroundColor: 'rgb(255, 99, 132)',
-                //             borderColor: 'rgb(255, 99, 132)',
-                //             data: vm.data_totalMoney,
-                //         }]
-                //     },
-
-                //     // Configuration options go here
-                //     options: {}
-                // });
+                setTimeout(vm.newChart,60000);
             }
         },
         data() {
             return {
-
-                data_orderNumber:[1,2,34,5,6,9,42,345,9,78,12,34,1,2,34,5,6,9,42,345,9,78,12,34],
                 labels:["0h","1h","2h","3h","4h","5h","6h","7h","8h","9h","10h","11h","12h","13h","14h","15h","16h","17h","18h","19h","20h","21h","22h","23h"],
-                // labels_orderNumber:["0h","1h","2h","3h","4h","5h","6h","7h","8h","9h","10h","11h","12h","13h","14h","15h","16h","17h","18h","19h","20h","21h","22h","23h"],
-                data_totalMoney:_.reverse([12,34,1,2,34,5,6,9,1,2,34,5,6,9,42,345,9,78,42,345,9,78,12,34]),
-                labels_totalMoney:["0h","1h","2h","3h","4h","5h","6h","7h","8h","9h","10h","11h","12h","13h","14h","15h","16h","17h","18h","19h","20h","21h","22h","23h"],
+                data_orderNumber:[],
+                data_totalMoney:[],
                 chartData: null,
             };
         },
