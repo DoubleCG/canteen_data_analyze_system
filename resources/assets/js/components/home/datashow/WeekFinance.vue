@@ -36,10 +36,12 @@
     export default {
         mounted() {
             let vm = this;
+            vm.newChart();
             axios.get('/api/home/weekFinance')
                 .then(response => {
-                    console.log(response.data);
                     let data = response.data;
+                    console.log('/api/home/weekFinance:');
+                    console.log(data);
                     let data_order_number = [];
                     let data_money = [];
                     for(let i=0;i<7;i++){
@@ -48,7 +50,7 @@
                     }
 
                     for(let i=0,l=data.length;i<l;i++){
-                        let day_in_week = new Date(parseInt(data[i].paytime+'000')).getDay();
+                        let day_in_week = new Date(parseInt(data[i].paytime+'000')).getDay()-1;
                         data_order_number[day_in_week] ++;
                         let foods = JSON.parse(data[i].foods.replace('\\',''));
                         for(let food of foods){
@@ -73,13 +75,12 @@
         },
         methods:{
             newChart(){
-
                 let ctx = document.getElementById('canvas-WeekFinance').getContext('2d');
                 let vm = this;
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['周一','周二','周三','周四','周五','周六','周日'],
+                        labels: ['周日','周一','周二','周三','周四','周五','周六'],
                         datasets: [{
                             label: "订单数",
                             backgroundColor: "#036497",

@@ -132,8 +132,14 @@
         },
         methods :{
             downloadExcel(){
-                console.log('downloadExcel');
-                axios.get('/')
+                axios.get('/api/downloadExcel')
+                .then(response=>{
+                    console.log('/api/downloadExcel');
+                    console.log(response);
+                })
+                .catch(error=>{
+                    console.log(error);
+                })
             },
             go(){
                 this.$router.push('/finance');

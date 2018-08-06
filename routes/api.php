@@ -23,9 +23,13 @@ Route::middleware(['auth:api'])->group(function () {
 	Route::post('/popular', 'DataController@popular');
 
 });
-// =============================
+// ============================================
 
 Route::get('/news', 'DataController@news');
+// Route::get('/downloadExcel', 'DataController@export');
+// Route::get('/downloadExcel', 'ExportController@exportExcel');
+// Route::get('/downloadExcel', 'ExportController@export');
+Route::get('/downloadExcel', 'UsersController@collection');
 
 Route::prefix('home')->group(function () {
 	Route::get('/singlePopular', 'HomeController@singlePopular');

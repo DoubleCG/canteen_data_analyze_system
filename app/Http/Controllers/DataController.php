@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\CheckModel;
 use App\DataModel;
+use App\Exports\UsersExport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DataController extends Controller {
+
+	public function export() {
+		return Excel::download(new UsersExport, 'users.xlsx');
+	}
 
 	public function news() {
 
