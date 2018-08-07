@@ -43,7 +43,7 @@
 
 
                     <!--顶部导航尚未开放-->
-                    <ul style='display:none' class="navbar-nav mr-auto">
+                    <ul class='top-nav' style='display:none' class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 客户<span class="caret"></span>
