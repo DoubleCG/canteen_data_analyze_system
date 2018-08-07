@@ -116,11 +116,17 @@
                         <!-- Authentication Links -->
                         <!-- guest a router ??  -->
                         @guest
-                            <li class="nav-item">
+<!--                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="111.230.180.101/login">登录</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="111.230.180.101/register">注册</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
