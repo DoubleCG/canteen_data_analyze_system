@@ -8,7 +8,8 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="http://111.230.180.101/register" aria-label="{{ __('Register') }}">
+                    <form method="POST" action="register" aria-label="{{ __('Register') }}">
+                    <!-- <form method="POST" action="http://111.230.180.101/register" aria-label="{{ __('Register') }}"> -->
                     <!-- <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}"> -->
                         @csrf
 
