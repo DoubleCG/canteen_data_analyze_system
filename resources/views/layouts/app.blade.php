@@ -43,7 +43,7 @@
 
 
                     <!--顶部导航尚未开放-->
-                    <ul style='display:none' class="navbar-nav mr-auto">
+                    <ul class='top-nav' style='display:none' class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 客户<span class="caret"></span>
@@ -117,11 +117,19 @@
                         <!-- guest a router ??  -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <!-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> -->
+                                <a class="nav-link" href="111.230.180.101/login">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <!-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> -->
+                                <a class="nav-link" href="111.230.180.101/register">{{ __('Register') }}</a>
                             </li>
+<!--                             <li class="nav-item">
+                                <a class="nav-link" href="111.230.180.101/login">登录</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="111.230.180.101/register">注册</a>
+                            </li> -->
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -135,7 +143,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="111.230.180.101/logout" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
