@@ -119,10 +119,12 @@
                         @guest
                             <li class="nav-item">
                                 <!-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> -->
+                                <a class="nav-link" href="login">{{ __('Login') }}</a>
                                 <a class="nav-link" href="111.230.180.101/login">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
                                 <!-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> -->
+                                <a class="nav-link" href="register">{{ __('Register') }}</a>
                                 <a class="nav-link" href="111.230.180.101/register">{{ __('Register') }}</a>
                             </li>
 <!--                             <li class="nav-item">
