@@ -74,7 +74,7 @@
                         <a href="http://111.230.180.101/home">主页</a>
                     @else
                         <!-- <a href="{{ route('login') }}">登录</a> -->
-                        <a href="http://111.230.180.101/login'">登录</a>
+                        <a href="http://111.230.180.101/login">登录</a>
                         <!-- <a href="http://111.230.180.101/login">登录</a> -->
                         <!-- <a href="{{ route('register') }}">Register</a> -->
                     @endauth
