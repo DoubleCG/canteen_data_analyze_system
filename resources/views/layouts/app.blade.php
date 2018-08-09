@@ -117,10 +117,12 @@
                         <!-- guest a router ??  -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <!-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> -->
+                                <a class="nav-link" href="111.230.180.101/login">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <!-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> -->
+                                <a class="nav-link" href="111.230.180.101/register">{{ __('Register') }}</a>
                             </li>
 <!--                             <li class="nav-item">
                                 <a class="nav-link" href="111.230.180.101/login">登录</a>
@@ -141,7 +143,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="111.230.180.101/logout" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
