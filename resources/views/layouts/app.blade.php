@@ -113,10 +113,11 @@
                         @guest
                             <li class="nav-item">
                                 <!-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> -->
-                                <a class="nav-link" href="login">{{ __('Login') }}</a>
+                                <!-- <a class="nav-link" href="login">{{ __('Login') }}</a> -->
+                                <a class="nav-link" href="login">登录</a>
                                 <!-- <a class="nav-link" href="111.230.180.101/login">{{ __('Login') }}</a> -->
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style='display:none'>
                                 <!-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> -->
                                 <a class="nav-link" href="register">{{ __('Register') }}</a>
                                 <!-- <a class="nav-link" href="111.230.180.101/register">{{ __('Register') }}</a> -->
@@ -139,7 +140,8 @@
                                     <a class="dropdown-item" href="logout" target="_blank"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <!-- {{ __('Logout') }} -->
+                                        注销
                                     </a>
 
                                     <!-- <form id="logout-form" action="111.230.180.101/logout" method="POST" style="display: none;"> -->
