@@ -21,6 +21,7 @@
 export default {
     mounted() {
         console.log('Component mounted.')
+        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
             // console.log(Cookie.get());
             // console.log(Cookie.remove('XSRF-TOKEN'));
 

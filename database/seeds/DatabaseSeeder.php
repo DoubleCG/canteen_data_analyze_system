@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder {
 		$now = Carbon::now()->getTimestamp();
 		$monthAgo = Carbon::now()->subMonth()->getTimestamp();
 
-		echo $now . '---->' . $monthAgo;
+		echo "Create orders: from " . $now . ' to ' . $monthAgo;
 		// echo gettype($now);
 		// 生成过去一个月订单
 
