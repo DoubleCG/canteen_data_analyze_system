@@ -1,12 +1,10 @@
 <?php
+use App\Http\Controllers\Controller;
 use App\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Http\Controllers\Controller;
 
-class UsersController extends Controller
-{
-    public function export()
-    {
-        return Excel::download(new UsersExport, 'users.xlsx');
-    }s
+class UsersController extends Controller {
+	public function export() {
+		return Excel::download(new UsersExport, 'users.xlsx');
+	}
 }

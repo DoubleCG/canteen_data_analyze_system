@@ -1,3 +1,5 @@
+
+
 create table `news`(
 	id int(11) NOT NULL auto_increment,
 	content varchar(1000) NOT NULL,
