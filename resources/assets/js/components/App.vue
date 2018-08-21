@@ -21,26 +21,22 @@
 export default {
     mounted() {
         console.log('Component mounted.')
-        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-            // console.log(Cookie.get());
-            // console.log(Cookie.remove('XSRF-TOKEN'));
-
-        },
-        components:{
-            Home,
-        },
-        computed: {
-            ...mapState([
-              // 映射 this.count 为 store.state.count
-              'show_view_router'
-            ]),
-        },
-        methods:{
-            ...mapMutations([
-              'closeRouter', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
-            ]),
-        }
+    },
+    components:{
+        Home,
+    },
+    computed: {
+        ...mapState([
+          // 映射 this.count 为 store.state.count
+          'show_view_router'
+        ]),
+    },
+    methods:{
+        ...mapMutations([
+          'closeRouter', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+        ]),
     }
+}
 </script>
 
 <style>

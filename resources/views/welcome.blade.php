@@ -7,16 +7,13 @@
 
         <title>Laravel</title>
 
-        <!-- Fonts -->
-        <!-- <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css"> -->
-
         <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
                 height: 100vh;
                 margin: 0;
             }
@@ -69,15 +66,11 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <!-- <a href="{{ url('/home') }}">主页</a> -->
-                        <!-- <a href="http://111.230.180.101/home">主页</a> -->
                         <a href="home">主页</a>
-                        <!-- <a href="http://111.230.180.101/home">主页</a> -->
+                        <!-- <a href="{{ url('/home') }}">Home</a> -->
                     @else
-                        <!-- <a href="{{ route('login') }}">登录</a> -->
                         <a href="login">登录</a>
-                        <!-- <a href="http://111.230.180.101/login">登录</a> -->
-                        <!-- <a href="http://111.230.180.101/login">登录</a> -->
+                        <!-- <a href="{{ route('login') }}">Login</a> -->
                         <!-- <a href="{{ route('register') }}">Register</a> -->
                     @endauth
                 </div>
@@ -90,6 +83,7 @@
 
                 <div class="links">
                     <a href="http://www.wggai.com/">公司官网</a>
+                </div>
                 </div>
             </div>
         </div>
