@@ -16,7 +16,7 @@ class OrdersTableSeeder extends Seeder {
 		while ($monthAgo < $now) {
 			$monthAgo += (int) (rand(10, 100));
 			DB::table('orders')->insert([
-				'client' => '001',
+				'clientid' => '001',
 				'paytime' => $monthAgo,
 				'paytype' => 'X',
 				'phone' => "12345678910",
