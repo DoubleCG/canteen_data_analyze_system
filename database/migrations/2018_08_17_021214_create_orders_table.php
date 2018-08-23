@@ -19,10 +19,12 @@ class CreateOrdersTable extends Migration {
 		Schema::create($this->tablename, function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('clientid', 11);
+			$table->string('order_num', 20);
 			$table->string('paytime', 10);
+			$table->double('money', 5, 2);
 			$table->string('paytype', 3);
 			$table->string('phone', 16);
-			$table->string('foods', 2000);
+			$table->string('foods', 2000); // JSON 字符串，清单，如果对money有争议，以这个为准。
 		});
 
 	}

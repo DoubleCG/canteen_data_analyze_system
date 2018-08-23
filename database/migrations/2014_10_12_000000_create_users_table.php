@@ -14,10 +14,12 @@ class CreateUsersTable extends Migration {
 			echo "Table named " . $this->tablename . " is exist";
 			return;
 		}
-
 		Schema::create($this->tablename, function (Blueprint $table) {
-			$table->increments('id')->nullable(false);
-			$table->string("content", 2000);
+			$table->increments('id');
+			$table->string('name');
+			$table->string('email')->unique();
+			$table->string('password');
+			$table->rememberToken();
 			$table->timestamps();
 		});
 	}

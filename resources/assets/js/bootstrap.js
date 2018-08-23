@@ -1,10 +1,11 @@
 
 
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
+// 数据刷新时间
+window.REFRESHTIME = {
+    moneyOverView:30000,
+    weekFinance:60000,
+}
+
 
 try {
     require('bootstrap');

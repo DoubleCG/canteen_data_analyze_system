@@ -17,6 +17,7 @@ class DataController extends Controller {
 	}
 
 	public function news() {
+		return DataModel::news();
 
 		// function array_utf8_encode($dat) {
 		// 	if (is_string($dat)) {
@@ -35,7 +36,6 @@ class DataController extends Controller {
 		// 	return $ret;
 		// }
 		// $result = Redis::set('a', array_utf8_encode('123'));
-		return DataModel::news();
 	}
 
 	//

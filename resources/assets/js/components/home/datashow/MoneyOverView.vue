@@ -15,24 +15,10 @@
                             @click='downloadExcel'
                         ></i>
                     </div>
-<!--                     <div>
-                        总量 <span class="OrderNumber">  </span> 件
-                    </div>
-                    <canvas id='canvas-MoneyOverView-OrderNumber'></canvas> -->
                     <canvas id='canvas'></canvas>
                 </div>
-<!--                 <div class="orderNumberRow">
-                    <div class="numTitle">
-
-                    </div>
-                    <div>
-                        总计 <span class="TotalMoney"></span> 元
-                    </div>
-                    <canvas id='canvas-MoneyOverView-TotalMoney'></canvas>
-                </div> -->
             </div>
         </div>
-
     </div>
 
 
@@ -48,9 +34,8 @@
     .title {
         margin: -10px auto 0;
         text-align: center;
-        border: solid 1px #888888;
         border-radius: 20px;
-        background-color: #888888;
+        background-color: #3394c7;
         width: 20%;
         color: #FFFFFF;
         font-size: 18px;
@@ -99,6 +84,25 @@
         components:{
         },
         mounted() {
+            this.newChart();
+            setInterval(this.newChart,REFRESHTIME.moneyOverView);
+        },
+        methods :{
+            downloadExcel(){
+                axios.get('/api/downloadExcel')
+                .then(response=>{
+                    console.log('/api/downloadExcel');
+                    console.log(response);
+                })
+                .catch(error=>{
+                    console.log(error);
+                })
+            },
+            go(){
+                this.$router.push('/finance');
+            },
+            newChart(){
+
             let vm = this;
             axios.get('/api/home/moneyOverView')
                 .then(response => {
@@ -124,54 +128,38 @@
                     console.log(record_data_totalMoney);
                     vm.data_orderNumber = record_data_orderNumber;
                     vm.data_totalMoney = record_data_totalMoney;
-                    vm.newChart();
+                    refresh();
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-        },
-        methods :{
-            downloadExcel(){
-                axios.get('/api/downloadExcel')
-                .then(response=>{
-                    console.log('/api/downloadExcel');
-                    console.log(response);
-                })
-                .catch(error=>{
-                    console.log(error);
-                })
-            },
-            go(){
-                this.$router.push('/finance');
-            },
-            newChart(){
-                // let canvas_OrderNumber = document.getElementById('canvas-MoneyOverView-OrderNumber').getContext('2d');
-                let canvas = document.getElementById('canvas').getContext('2d');
-                let vm = this;
-                // new Chart(canvas_OrderNumber, {
-                new Chart(canvas, {
-                    // The type of chart we want to create
-                    type: 'line',
-                    // The data for our dataset
-                    data: {
-                        labels: vm.labels,
-                        datasets: [{
-                            label: "订单数",
-                            backgroundColor: 'transparent',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: vm.data_orderNumber,
 
-                        },{
-                            label: "营业额",
-                            backgroundColor: 'transparent',
-                            borderColor: '#635148',
-                            data: vm.data_totalMoney,
-                        }]
-                    },
-                    // Configuration options go here
-                    options: {}
-                });
-                setTimeout(vm.newChart,60000);
+
+                function refresh(){
+                    let canvas = document.getElementById('canvas').getContext('2d');
+                    new Chart(canvas, {
+                        // The type of chart we want to create
+                        type: 'line',
+                        // The data for our dataset
+                        data: {
+                            labels: vm.labels,
+                            datasets: [{
+                                label: "订单数",
+                                backgroundColor: 'transparent',
+                                borderColor: '#e81b1b',
+                                data: vm.data_orderNumber,
+
+                            },{
+                                label: "营业额",
+                                backgroundColor: 'transparent',
+                                borderColor: '#3cC250',
+                                data: vm.data_totalMoney,
+                            }]
+                        },
+                        // Configuration options go here
+                        options: {}
+                    });
+                }
             }
         },
         data() {

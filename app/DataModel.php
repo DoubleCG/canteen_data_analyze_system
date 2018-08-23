@@ -8,9 +8,7 @@ class DataModel {
 
 	public static function news() {
 		$result = DB::table('news')->get();
-		if (true) {
-			DB::table('news')->delete();
-		}
+		DB::table('news')->delete();
 		return json_encode($result);
 	}
 
