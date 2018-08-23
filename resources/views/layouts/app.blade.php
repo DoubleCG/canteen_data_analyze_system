@@ -28,7 +28,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-
                     <!-- TOP-left NAV -->
                     <ul class="navbar-nav mr-auto">
 <li class="nav-item dropdown">
@@ -50,10 +49,10 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a style='hover:pointer' class="dropdown-item" data-route='finance' @click='viewRouter'>经营状况</a>
-<!--                                 <a style='hover:pointer' class="dropdown-item" data-route='moneyOverView' @click='viewRouter'>营业额总览</a>
+                                <a style='hover:pointer' class="dropdown-item" data-route='moneyOverView' @click='viewRouter'>营业额总览</a>
                                 <a style='hover:pointer' class="dropdown-item" data-route='orderMoney' @click='viewRouter'>订单营业额</a>
                                 <a style='hover:pointer' class="dropdown-item" data-route='payType' @click='viewRouter'>付款类型</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='salesData' @click='viewRouter'>营业数据</a> -->
+                                <a style='hover:pointer' class="dropdown-item" data-route='salesData' @click='viewRouter'>营业数据</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">

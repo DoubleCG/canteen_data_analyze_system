@@ -33,7 +33,7 @@ export default {
     },
     methods:{
         ...mapMutations([
-          'closeRouter', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+          'closeRouter',
         ]),
     }
 }
@@ -47,7 +47,7 @@ export default {
         width:100%;
         height:90%;
         padding:2%;
-        background-color:rgba(255,255,255,0.9);
+        background-color:rgba(255,255,255,0.95);
     }
 
 </style>
