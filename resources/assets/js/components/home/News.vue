@@ -4,12 +4,13 @@
             <div class="title"> 最新动态 </div>
             <div class="content">
                 <li v-for='item in newslist'>
-                    {客户端{{item.clientid}}} - [{{item.paytime}}] 手机{{item.phone}} 支付 {{item.money}} 元，清单：
-                    <br>订单号：{{item.order_num}}
-                    <div v-for='food in item.foods'>
-                        · {{food.name}} : {{food.price}}元 * {{food.number}}份
+                    <div class="alert alert-primary" role="alert">
+                        {客户端{{item.clientid}}} - [{{item.paytime}}] 手机{{item.phone}} 支付 {{item.money}} 元，清单：
+                        <br>订单号：{{item.order_num}}
+                        <div v-for='food in item.foods'>
+                            · {{food.name}} : {{food.price}}元 * {{food.number}}份
+                        </div>
                     </div>
-                -------------------------------------------------------------
                 </li>
             </div>
         </div>

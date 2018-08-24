@@ -1,6 +1,6 @@
 <template>
     <div class="money-over-view">
-        <div class="title"  @click.native="go">
+        <div class="title">
             今日营业状况
         </div>
         <div class="content">
@@ -24,63 +24,7 @@
 
 </template>
 
-<style scoped>
-.echarts {
-  height: 300px;
-}
-    .money-over-view {
-        border: solid 1px #e6e6e6;
-        border-radius: 20px;
-        margin-left: 1%;
-    }
 
-    .title {
-        margin: -10px auto 0;
-        text-align: center;
-        border-radius: 20px;
-        background-color: #3394c7;
-        width: 20%;
-        color: #FFFFFF;
-        font-size: 18px;
-        margin-bottom: 2%;
-    }
-
-    .number {
-        border-right: solid 1px #e6e6e6;
-
-    }
-
-    .numTitle {
-        text-align: left;
-        margin-left: 10%;
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    .content {
-        margin-bottom: 2%;
-    }
-
-    .orderNumberRow {
-        margin-bottom: 10%;
-    }
-
-    .OrderNumber {
-        font-weight: bold;
-        font-size: 17px;
-    }
-
-    .TotalMoney {
-        font-weight: bold;
-        color: #20a0ff;
-        font-size: 17px;
-    }
-
-    .chart {
-        width: calc(100%) !important;
-        height: 300px !important;
-    }
-</style>
 
 <script>
 
@@ -92,7 +36,7 @@ import VeLine from 'v-charts/lib/line.common';
         },
         mounted() {
             this.newChart();
-            // setInterval(this.newChart,REFRESHTIME.moneyOverView);
+            setInterval(this.newChart,REFRESHTIME.moneyOverView);
         },
         methods :{
             downloadExcel(){
@@ -104,9 +48,6 @@ import VeLine from 'v-charts/lib/line.common';
                 .catch(error=>{
                     console.log(error);
                 })
-            },
-            go(){
-                this.$router.push('/finance');
             },
             newChart(){
                 let vm = this;
@@ -188,3 +129,62 @@ import VeLine from 'v-charts/lib/line.common';
 
     }
 </script>
+
+
+
+<style scoped>
+    .money-over-view {
+        border: solid 1px #e6e6e6;
+        border-radius: 20px;
+        margin-left: 1%;
+        margin-top:10rem;
+        height:500px;
+    }
+
+    .title {
+        margin: -10px auto 0;
+        text-align: center;
+        border-radius: 20px;
+        background-color: #3394c7;
+        width: 20%;
+        color: #FFFFFF;
+        font-size: 18px;
+        margin-bottom: 2%;
+    }
+
+    .number {
+        border-right: solid 1px #e6e6e6;
+
+    }
+
+    .numTitle {
+        text-align: left;
+        margin-left: 10%;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .content {
+        margin-bottom: 2%;
+    }
+
+    .orderNumberRow {
+        margin-bottom: 10%;
+    }
+
+    .OrderNumber {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    .TotalMoney {
+        font-weight: bold;
+        color: #20a0ff;
+        font-size: 17px;
+    }
+
+    .chart {
+        width: calc(100%) !important;
+        height: 300px !important;
+    }
+</style>

@@ -13,7 +13,6 @@
         </div>
 
         <div class="news">
-
             <div class="secondRow">
                 <div :span="12" class="weekFinance">
                     <div class="upperRow">

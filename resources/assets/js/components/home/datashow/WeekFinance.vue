@@ -1,50 +1,39 @@
+
 <template>
     <div class="news">
-        <div class="title"> 本周营业数据 </div>
-        <canvas id='canvas-WeekFinance'></canvas>
+            <div class="title"> 本周营业数据 </div>
+        <ve-histogram :data="chartData"></ve-histogram>
     </div>
-
-
 </template>
 
-<style scoped>
-    .news {
-        border: solid 1px #e6e6e6;
-        border-radius: 20px;
-        margin-left: 1%;
-        margin-top: 2rem;
-    }
-
-    .title {
-        margin: -10px auto 0;
-        text-align: center;
-        border-radius: 20px;
-        background-color: #3394c7;
-        width: 30%;
-        color: #FFFFFF;
-        font-size: 18px;
-        margin-bottom: 2%;
-    }
-
-    .chart {
-        width: calc(100%) !important;
-        height: 300px !important;
-    }
-</style>
-
 <script>
+import VeHistogram from 'v-charts/lib/histogram.common';
+
     export default {
+        components:{
+            VeHistogram
+        },
         mounted() {
             this.newChart();
             setInterval(this.newChart,REFRESHTIME.weekFinance);
         },
         data() {
             return {
+                chartData: {
+                  columns: ['date', 'cost', 'profit', 'growthRate', 'people'],
+                  rows: [
+                    { 'cost': 1523, 'date': '01/01', 'profit': 1523, 'growthRate': 0.12, 'people': 100 },
+                    { 'cost': 1223, 'date': '01/02', 'profit': 1523, 'growthRate': 0.345, 'people': 100 },
+                    { 'cost': 2123, 'date': '01/03', 'profit': 1523, 'growthRate': 0.7, 'people': 100 },
+                    { 'cost': 4123, 'date': '01/04', 'profit': 1523, 'growthRate': 0.31, 'people': 100 }
+                  ]
+                },
                 date_order_number: [],
                 data_money: []
             };
         },
         methods:{
+
             newChart(){
                 let vm = this;
                 axios.get('/api/home/weekFinance')
@@ -99,3 +88,36 @@
         }
     }
 </script>
+
+
+
+<style scoped>
+    .news {
+        border: solid 1px #e6e6e6;
+        border-radius: 20px;
+        margin-left: 1%;
+        margin-top: 10rem;
+    }
+
+    .title {
+        margin: -10px auto 0;
+        text-align: center;
+        border-radius: 20px;
+        background-color: #3394c7;
+        width: 30%;
+        color: #FFFFFF;
+        font-size: 18px;
+        margin-bottom: 2%;
+    }
+
+    .chart {
+        width: calc(100%) !important;
+        height: 300px !important;
+    }
+</style>
+
+
+
+
+
+
