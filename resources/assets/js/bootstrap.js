@@ -8,8 +8,8 @@ window.REFRESHTIME = {
 
 
 try {
-    require('bootstrap');
     window.$ = window.jQuery = require('jquery');
+    require('bootstrap');
     window._ = require('lodash');
     window.Popper = require('popper.js').default;
     window.Vue = require('vue');

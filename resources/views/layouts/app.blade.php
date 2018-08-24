@@ -11,9 +11,8 @@
 
     <link rel="icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/icono.min.css">
-    <script src="js/app.js" defer></script>
+  <script src="js/app.js" defer></script>
     <link href="css/app.css" rel="stylesheet">
-
 </head>
 <body>
     <div id="app">
@@ -57,6 +56,13 @@
                             </div>
                         </li>
 
+
+
+
+
+
+
+                        <!-- 暂不开放 -->
                         <li class="nav-item dropdown" style='display: none'>
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 售卖<span class="caret"></span>

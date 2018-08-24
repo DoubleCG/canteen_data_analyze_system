@@ -2,10 +2,7 @@
     <div>
         <div>
             <div :inline="true" class="demo-form-inline">
-                <div>
-                    <!-- 日期选择器 -->
-
-                </div>
+                <flat-pickr v-model="date"></flat-pickr>
                 <div>
                     <button type="primary" @click="propsDate">查询</button>
                 </div>
@@ -44,6 +41,9 @@
     import ClientOverView from './ClientOverView';
     import ClinetFre from './ClientFre';
     import History from './History';
+    import flatPickr from 'vue-flatpickr-component';
+    import 'flatpickr/dist/flatpickr.css';
+
 
     export default {
         mounted() {
@@ -53,12 +53,14 @@
                 } else {
                     $('.page-component-up').fadeOut()
                 }
-            })
+            });
+            $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
         },
         components: {
             ClientOverView,
             ClinetFre,
-            History
+            History,
+            flatPickr
         },
         data() {
             return {

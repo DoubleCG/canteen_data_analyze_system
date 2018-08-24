@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start":"php artisan serve",
+    "start": "php artisan serve",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
@@ -9,9 +9,9 @@
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "newsoutput" : "php artisan db:seed --class=NewsTableSeeder",
-    "seed" : "php artisan db:seed",
-    "testAdmin" : "php artisan db:seed --class=UsersTableSeeder"
+    "newsoutput": "php artisan db:seed --class=NewsTableSeeder",
+    "seed": "php artisan db:seed",
+    "testAdmin": "php artisan db:seed --class=UsersTableSeeder"
   },
   "devDependencies": {
     "axios": "^0.18",
@@ -31,6 +31,7 @@
     "jquery": "^3.3.1",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.10",
+    "vue-flatpickr-component": "^7.0.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
     "xlsx": "^0.13.3"
