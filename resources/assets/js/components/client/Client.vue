@@ -3,17 +3,8 @@
         <div>
             <div :inline="true" class="demo-form-inline">
                 <div>
-                    <div
-                            v-model="date"
-                            type="daterange"
-                            align="right"
-                            unlink-panels
-                            range-separator="至"
-                            start-placeholder="开始日期"
-                            end-placeholder="结束日期"
-                            format="yyyy 年 MM 月 dd 日"
-                            :picker-options="pickerOption">
-                    </div>
+                    <!-- 日期选择器 -->
+
                 </div>
                 <div>
                     <button type="primary" @click="propsDate">查询</button>

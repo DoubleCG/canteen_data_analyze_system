@@ -32,40 +32,32 @@
                     @else
                     <!-- TOP-left NAV -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" style='cursor:pointer'>
                             <a class="nav-link" data-route='client' @click='viewRouter'>
                                 客流
                             </a>
                         </li>
 
-
+                        <li class="nav-item dropdown" style='cursor:pointer'>
+                            <a class="nav-link" data-route='finance' @click='viewRouter'>
+                                经济
+                            </a>
+                        </li>
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                经济<span class="caret"></span>
+                                查询<span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a style='hover:pointer' class="dropdown-item" data-route='finance' @click='viewRouter'>经营状况</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='moneyOverView' @click='viewRouter'>营业额总览</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='orderMoney' @click='viewRouter'>订单营业额</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='payType' @click='viewRouter'>付款类型</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='salesData' @click='viewRouter'>营业数据</a>
+                                <a style='cursor:pointer' class="dropdown-item" data-route='orderCheck' @click='viewRouter'>订单查询</a>
+                                <a style='cursor:pointer' class="dropdown-item" data-route='orderDetail' @click='viewRouter'>详单查询</a>
+                                <a style='cursor:pointer' class="dropdown-item" data-route='popular' @click='viewRouter'>热度查询</a>
+                                <a style='cursor:pointer' class="dropdown-item" data-route='sales' @click='viewRouter'>销量查询</a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                表单<span class="caret"></span>
-                            </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a style='hover:pointer' class="dropdown-item" data-route='orderCheck' @click='viewRouter'>订单查询</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='orderDetail' @click='viewRouter'>详单查询</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='popular' @click='viewRouter'>热度查询</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='sales' @click='viewRouter'>销量查询</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" style='display: none'>
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 售卖<span class="caret"></span>
                             </a>
@@ -80,10 +72,12 @@
                                 <a style='hover:pointer' class="dropdown-item" data-route='basicInfo' @click='viewRouter'>基本信息</a>
                                 <a style='hover:pointer' class="dropdown-item" data-route='bestPartner' @click='viewRouter'>最佳套餐</a>
                                 <a style='hover:pointer' class="dropdown-item" data-route='history' @click='viewRouter'>历史记录</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='history' @click='viewRouter'>历史细节</a>
+                                <a style='hover:pointer' class="dropdown-item" data-route='historyDetail' @click='viewRouter'>历史细节</a>
                                 <a style='hover:pointer' class="dropdown-item" data-route='salesSearch' @click='viewRouter'>售卖查询</a>
                             </div>
                         </li>
+
+
                     </ul>
                     @endguest
 
