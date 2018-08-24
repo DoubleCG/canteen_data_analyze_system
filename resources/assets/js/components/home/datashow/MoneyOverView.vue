@@ -124,8 +124,6 @@
                         }
                     }
 
-                    console.log(record_data_orderNumber);
-                    console.log(record_data_totalMoney);
                     vm.data_orderNumber = record_data_orderNumber;
                     vm.data_totalMoney = record_data_totalMoney;
                     refresh();
