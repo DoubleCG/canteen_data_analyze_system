@@ -14,7 +14,6 @@ try {
     window.Popper = require('popper.js').default;
     window.Vue = require('vue');
     window.axios = require('axios');
-    window.Chart = require('chart.js');
 } catch (e) {
     console.log('bootstrap');
 }
