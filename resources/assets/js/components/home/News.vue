@@ -1,18 +1,16 @@
 <template>
     <div :span="12" class="news">
-        <div :span="12" class="moneyOverView">
-            <div class="title"> 最新动态 </div>
-            <div class="content">
-                <li v-for='item in newslist'>
-                    <div class="alert alert-primary" role="alert">
-                        {客户端{{item.clientid}}} - [{{item.paytime}}] 手机{{item.phone}} 支付 {{item.money}} 元，清单：
-                        <br>订单号：{{item.order_num}}
-                        <div v-for='food in item.foods'>
-                            · {{food.name}} : {{food.price}}元 * {{food.number}}份
-                        </div>
+        <div class="title"> 最新动态 </div>
+        <div class="content">
+            <li v-for='item in newslist'>
+                <div class="alert alert-primary" role="alert">
+                    {客户端{{item.clientid}}} - [{{item.paytime}}] 手机{{item.phone}} 支付 {{item.money}} 元，清单：
+                    <br>订单号：{{item.order_num}}
+                    <div v-for='food in item.foods'>
+                        · {{food.name}} : {{food.price}}元 * {{food.number}}份
                     </div>
-                </li>
-            </div>
+                </div>
+            </li>
         </div>
     </div>
 </template>
@@ -96,6 +94,7 @@
         border: solid 1px #e6e6e6;
         border-radius: 20px;
         margin-left: 1%;
+        min-height:600px;
     }
     .title{
         margin: -10px auto 0;
@@ -109,7 +108,7 @@
     .content{
         overflow-y: scroll;
         width:90%;
-        height:400px;
-        margin:5%;
+        height:600px;
+        margin:2% 5%;
     }
 </style>

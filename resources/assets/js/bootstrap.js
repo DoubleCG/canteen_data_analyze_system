@@ -1,9 +1,13 @@
 
+window.SECOND = 1000;
+window.MINUTE = 60*SECOND;
+window.HOUR = 60*MINUTE;
+window.DAY = 24*HOUR;
 
 // 数据刷新时间
 window.REFRESHTIME = {
-    moneyOverView:30000,
-    weekFinance:60000,
+    moneyOverView:30*MINUTE,  // 三十秒
+    weekFinance:0.5*HOUR,   //半小时
 }
 
 

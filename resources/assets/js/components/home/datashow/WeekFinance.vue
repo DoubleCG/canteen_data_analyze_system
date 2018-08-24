@@ -20,16 +20,17 @@ import VeHistogram from 'v-charts/lib/histogram.common';
         data() {
             return {
                 chartData: {
-                  columns: ['date', 'cost', 'profit', 'growthRate', 'people'],
+                  columns: ['weekday','订单数','营业额'],
                   rows: [
-                    { 'cost': 1523, 'date': '01/01', 'profit': 1523, 'growthRate': 0.12, 'people': 100 },
-                    { 'cost': 1223, 'date': '01/02', 'profit': 1523, 'growthRate': 0.345, 'people': 100 },
-                    { 'cost': 2123, 'date': '01/03', 'profit': 1523, 'growthRate': 0.7, 'people': 100 },
-                    { 'cost': 4123, 'date': '01/04', 'profit': 1523, 'growthRate': 0.31, 'people': 100 }
+                    { 'weekday': '周一', '订单数':0, '营业额':0 },
+                    { 'weekday': '周二', '订单数':0, '营业额':0  },
+                    { 'weekday': '周三', '订单数':0, '营业额':0  },
+                    { 'weekday': '周四', '订单数':0, '营业额':0  },
+                    { 'weekday': '周五', '订单数':0, '营业额':0  },
+                    { 'weekday': '周六', '订单数':0, '营业额':0  },
+                    { 'weekday': '周日', '订单数':0, '营业额':0  }
                   ]
                 },
-                date_order_number: [],
-                data_money: []
             };
         },
         methods:{
@@ -40,50 +41,21 @@ import VeHistogram from 'v-charts/lib/histogram.common';
                     .then(response => {
                         let data = response.data;
                         console.log('/api/home/weekFinance:');
-                        console.log(data);
                         let data_order_number = [];
                         let data_money = [];
-                        for(let i=0;i<7;i++){
-                            data_order_number[i] = 0;
-                            data_money[i] = 0;
-                        }
-
+                        let rows = vm.chartData.rows;
                         for(let i=0,l=data.length;i<l;i++){
                             let day_in_week = new Date(parseInt(data[i].paytime+'000')).getDay()-1;
-                            data_order_number[day_in_week] ++;
+                            rows[day_in_week]['订单数'] ++;
                             let foods = JSON.parse(data[i].foods.replace('\\',''));
                             for(let food of foods){
-                                data_money[day_in_week] += food.price * food.number;
+                                rows[day_in_week]['营业额'] += food.price * food.number;
                             }
                         }
-
-                        vm.data_order_number = data_order_number;
-                        vm.data_money = data_money;
-                        refresh()
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
-
-                function refresh(){
-                    let ctx = document.getElementById('canvas-WeekFinance').getContext('2d');
-                    new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ['周日','周一','周二','周三','周四','周五','周六'],
-                            datasets: [{
-                                label: "订单数",
-                                backgroundColor: "#e81b1b",
-                                data: vm.data_order_number,
-                            },{
-                                label: "营业额",
-                                backgroundColor: "#3cC250",
-                                data: vm.data_money,
-                            }]
-                        },
-                        options: {}
-                    });
-                }
             }
         }
     }

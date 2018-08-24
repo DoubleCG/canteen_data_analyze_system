@@ -7,7 +7,8 @@
             <div :span="5" class="number">
                 <div class="orderNumberRow">
                     <div class="numTitle">
-                        订单数:{{ OrderNumber }} / 营业额:{{ TotalMoney }}
+                    <h5>订单数：{{ OrderNumber }} / 营业额：{{ TotalMoney }}</h5>
+
                         <i
                             title='导出Excel'
                             style='float:right;margin-right:10px;'

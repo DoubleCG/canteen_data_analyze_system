@@ -54,6 +54,7 @@ export default {
     .routerView{
         overflow-y:scroll;
         position:fixed;
+        z-index:100;
         top:0;
         left:0;
         width:100%;

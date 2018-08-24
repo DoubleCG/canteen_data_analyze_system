@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class='client'>
         <div>
             <div :inline="true" class="demo-form-inline">
                 <flat-pickr v-model="date"></flat-pickr>
