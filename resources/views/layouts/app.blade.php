@@ -28,20 +28,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+                    @guest
+                    @else
                     <!-- TOP-left NAV -->
                     <ul class="navbar-nav mr-auto">
-<li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                客户<span class="caret"></span>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" data-route='client' @click='viewRouter'>
+                                客流
                             </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a style='hover:pointer' class="dropdown-item" data-route='client' @click='viewRouter'>基本情况</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='clientOverView' @click='viewRouter'>客流总览</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='clientFre' @click='viewRouter'>客户频率</a>
-                                <a style='hover:pointer' class="dropdown-item" data-route='history' @click='viewRouter'>历史客流</a>
-                            </div>
                         </li>
+
+
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 经济<span class="caret"></span>
@@ -87,6 +85,7 @@
                             </div>
                         </li>
                     </ul>
+                    @endguest
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

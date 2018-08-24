@@ -3,7 +3,7 @@
         <div>
             <div :inline="true" class="demo-form-inline">
                 <div>
-<!--                     <div
+                    <div
                             v-model="date"
                             type="daterange"
                             align="right"
@@ -13,7 +13,7 @@
                             end-placeholder="结束日期"
                             format="yyyy 年 MM 月 dd 日"
                             :picker-options="pickerOption">
-                    </div> -->
+                    </div>
                 </div>
                 <div>
                     <button type="primary" @click="propsDate">查询</button>
@@ -29,14 +29,14 @@
             <div class="secondRow">
                 <div :span="12" class="weekFinance">
                     <div class="upperRow">
-                        <div :date="dateForSearch"></div>
+                        <client-over-view :date="dateForSearch"></client-over-view>
                     </div>
                     <div v-show="false">
-                        <div :date="dateForSearch"></div>
+                        <clinet-fre :date="dateForSearch"></clinet-fre>
                     </div>
                 </div>
                 <div :span="12" class="todayClient">
-                    <div :date="dateForSearch"></div>
+                    <history :date="dateForSearch"></history>
                 </div>
             </div>
 
@@ -53,8 +53,6 @@
     import ClientOverView from './ClientOverView';
     import ClinetFre from './ClientFre';
     import History from './History';
-    // import addDays from 'date-fns/add_days'
-    // import format from 'date-fns/format'
 
     export default {
         mounted() {
@@ -65,6 +63,11 @@
                     $('.page-component-up').fadeOut()
                 }
             })
+        },
+        components: {
+            ClientOverView,
+            ClinetFre,
+            History
         },
         data() {
             return {
@@ -161,11 +164,7 @@
 
 
         },
-        components: {
-            ClientOverView,
-            ClinetFre,
-            History
-        },
+
 
     }
 </script>

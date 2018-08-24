@@ -1,7 +1,9 @@
 <template>
     <div class="container">
         <div class="routerView" v-show='show_view_router'>
-            <i class="icono-cross" @click='closeRouter'></i>
+            <div class='close-btn' @click='closeRouter'>
+                <i class="icono-cross" ></i>
+            </div>
             <router-view ></router-view>
         </div>
         <div class="row justify-content-center">
@@ -40,12 +42,22 @@ export default {
 </script>
 
 <style>
+    .close-btn {
+        border-radius: 50%;
+        border:2px solid #333;
+        position: absolute;
+        left:10px;
+        top:10px;
+        cursor:pointer;
+    }
+
     .routerView{
+        overflow-y:scroll;
         position:fixed;
+        top:0;
         left:0;
-        top:6%;
         width:100%;
-        height:90%;
+        height:100%;
         padding:2%;
         background-color:rgba(255,255,255,0.95);
     }
