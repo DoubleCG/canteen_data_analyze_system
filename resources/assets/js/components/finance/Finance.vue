@@ -1,31 +1,16 @@
 <template>
     <div>
-        <div>
-            <div :inline="true" class="demo-form-inline">
-                <div>
-                    <div
-                            v-model="date"
-                            type="daterange"
-                            align="right"
-                            unlink-panels
-                            range-separator="至"
-                            start-placeholder="开始日期"
-                            end-placeholder="结束日期"
-                            format="yyyy 年 MM 月 dd 日"
-                            :picker-options="pickerOption">
-                    </div>
-                </div>
-                <div>
-                    <button type="primary" @click="propsDate">查询</button>
-                </div>
-                <div>
-                    <button @click="exportExcel" type="primary" icon="el-icon-download">导出</button>
-
-                </div>
+        <div class="top-chooser">
+            <div clalss='date-picker'>
+                <flat-pickr v-model="dateStart" placeholder="开始时间"></flat-pickr>
+                -
+                <flat-pickr v-model="dateEnd" placeholder="结束时间"></flat-pickr>
             </div>
+            <button class='query-btn' @click="propsDate">查询</button>
+            <button class='export-btn' @click="exportExcel" type="primary" icon="el-icon-download">导出</button>
         </div>
 
-        <div class="news">
+        <div class="content">
 
             <div class="firstRow">
                 <div :span="12" class="moneyOverView">
@@ -53,58 +38,32 @@
     </div>
 </template>
 
-<style scoped>
-    .dataShow {
-        margin-top: 3%;
-        text-align: -webkit-center;
 
-    }
-
-    .news {
-        text-align: -webkit-center;
-
-    }
-
-    .popular {
-        text-align: -webkit-center;
-
-    }
-
-    .firstRow {
-        margin-bottom: 2%;
-    }
-
-    .page-component-up {
-        background-color: #fff;
-        position: fixed;
-        right: 100px;
-        bottom: 150px;
-        width: 40px;
-        height: 40px;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: .3s;
-        box-shadow: 0 0 6px rgba(0, 0, 0, .12);
-    }
-
-    .el-icon-caret-top {
-        color: #409eff;
-        display: block;
-        line-height: 40px;
-        text-align: center;
-        font-size: 18px;
-    }
-</style>
 
 <script>
     import MoneyOverView from './MoneyOverView';
     import PayType from './PayType';
     import SalesData from './SalesData';
     import OrderMoney from './OrderMoney';
-    import addDays from 'date-fns/add_days'
-    import format from 'date-fns/format'
+    import addDays from 'date-fns/add_days';
+    import format from 'date-fns/format';
+
+    import flatPickr from 'vue-flatpickr-component';
+    import 'flatpickr/dist/flatpickr.css';
+
+
 
     export default {
+        components: {
+            MoneyOverView,
+            PayType,
+            SalesData,
+            OrderMoney,
+
+            flatPickr
+
+        },
+
         mounted() {
             $(window).on('scroll', function () {
                 if ($(this).scrollTop() > 50) {
@@ -116,7 +75,8 @@
         },
         data() {
             return {
-                date: null,
+                dateStart: null,
+                dateEnd:null,
                 dateForSearch: null,
                 pickerOption: {
                     shortcuts: [{
@@ -208,12 +168,65 @@
             }
 
         },
-        components: {
-            MoneyOverView,
-            PayType,
-            SalesData,
-            OrderMoney
-        },
+
 
     }
 </script>
+
+<style scoped>
+    .dataShow {
+        margin-top: 3%;
+        text-align: -webkit-center;
+
+    }
+
+    .top-chooser{
+        margin:40px;
+    }
+    .date-picker{
+        float:left;
+    }
+    .query-btn{
+        float:left;
+    }
+    .export-btn{
+        float:left;
+    }
+
+
+    .content {
+        text-align: -webkit-center;
+        margin:2%;
+        margin-top:3rem;
+    }
+
+    .popular {
+        text-align: -webkit-center;
+
+    }
+
+    .firstRow {
+        margin-bottom: 2%;
+    }
+
+    .page-component-up {
+        background-color: #fff;
+        position: fixed;
+        right: 100px;
+        bottom: 150px;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: .3s;
+        box-shadow: 0 0 6px rgba(0, 0, 0, .12);
+    }
+
+    .el-icon-caret-top {
+        color: #409eff;
+        display: block;
+        line-height: 40px;
+        text-align: center;
+        font-size: 18px;
+    }
+</style>

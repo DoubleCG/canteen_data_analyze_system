@@ -30,8 +30,13 @@
                     @guest
                     @else
                     <!-- TOP-left NAV -->
+
+
+
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown" style='cursor:pointer'>
+
+                        <!-- 暂不开放 -->
+                        <li class="nav-item dropdown" style='cursor:pointer;display:none;'>
                             <a class="nav-link" data-route='client' @click='viewRouter'>
                                 客流
                             </a>
@@ -55,11 +60,6 @@
                                 <a style='cursor:pointer' class="dropdown-item" data-route='sales' @click='viewRouter'>销量查询</a>
                             </div>
                         </li>
-
-
-
-
-
 
 
                         <!-- 暂不开放 -->
